@@ -1,0 +1,13 @@
+---
+- name: Installing tree
+  hosts: 172.31.34.120
+  tasks: 
+   - name: install tree
+     apt: 
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+
+
+
+...

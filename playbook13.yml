@@ -1,0 +1,33 @@
+---
+- name: configure jenkins on dev server
+  hosts: devserver
+  tasks:
+   - name: install software used for jenkins
+     apt:
+      name: "{{item}}"
+      state: present
+     with_items:
+      - openjdk-8-jdk
+      - git
+      - maven
+   - name: download jenkins.war file
+     get_url:
+      url:  https://get.jenkins.io/war-stable/2.235.5/jenkins.war
+      dest: /tmp
+- name: install tomcat on appserver
+  hosts: appserver
+  tasks:
+   - name: install tomcat8 and tomcat8-admin
+     apt:
+      name: "{{item}}"
+      state: present
+      update_cache: yes
+     with_items:
+      - tomcat8
+      - tomcat8-admin
+   - name: copy tomcat-users.xml file in tomcat8
+     copy:
+      src: tomcat-users.xml
+      dest: /etc/tomcat8
+
+...

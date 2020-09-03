@@ -1,0 +1,14 @@
+---
+- name: copy /etc/password file
+  hosts: all
+  tasks:
+   - name: copy password file
+     copy:
+       src: /etc/passwd
+       dest: /tmp
+
+
+
+
+
+...

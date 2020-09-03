@@ -1,0 +1,15 @@
+---
+- name: creating files and folders
+  hosts: all
+  tasks:
+   - name: creating files
+     file:
+      name: "{{a}}"
+      state: "{{b}}"
+   - name: creating directories
+     file:
+      name: "{{c}}"
+      state: "{{d}}"
+...
+
+

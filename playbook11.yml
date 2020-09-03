@@ -1,0 +1,33 @@
+---
+- name: install software packages
+  hosts: all
+  tasks: 
+   - name: install different softwares
+     apt:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: tree,b: present,c: yes}
+      - {a: apache2,b: absent,c: no}
+      - {a: openjdk-8-jdk,b: latest,c: no}
+      - {a: git,b: absent,c: yes}
+
+...        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

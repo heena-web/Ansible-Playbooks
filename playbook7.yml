@@ -1,0 +1,33 @@
+---
+- name: installing software using playscope variables
+  hosts: all
+  tasks:
+   - name: Install software packages
+     apt:
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+   - name: changing default port of tomcat
+     replace:
+      regexp: "{{f}}"
+      replace: "{{g}}"
+      path: "{{h}}"
+   - name: checking url of tomcat
+     uri:
+      url: "{{d}}"
+      status_code: "{{e}}"
+  vars:
+   - a: tomcat8
+   - b: absent
+   - c: yes
+   - d: http://172.31.34.120:9090
+   - e: 200
+   - f: 8080
+   - g: 9090
+   - h: /etc/tomcat8/server.xml
+
+
+
+
+
+...

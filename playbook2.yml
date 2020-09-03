@@ -1,0 +1,18 @@
+---
+- name: creating users and create files users home directory
+  hosts: all
+  tasks:
+   - name: creating users
+     user:
+       name: mohit
+       password: mohit@123
+       home: /home/mohit
+       uid: 1234
+       comment: "a regular user"
+   - name: creating files in user home directory
+     file:
+       name: /home/mohit/file1.txt
+       state: touch
+       mode: 755
+       owner: mohit
+...
